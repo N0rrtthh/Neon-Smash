@@ -124,7 +124,6 @@ def display_scoreboard(scores=None):
 
     window.fill((0, 0, 0))
     draw_text("LEADERBOARD", button_font, (255, 255, 255), WINDOW_WIDTH // 2, 100)
-
     y = 200
 
     # Display ranking scores
@@ -133,7 +132,7 @@ def display_scoreboard(scores=None):
         name_text = username
         score_text_width = button_font.size(score_text)[0]
         name_text_width = button_font.size(name_text)[0]
-        draw_text(name_text, button_font, (255, 255, 255), WINDOW_WIDTH // 2 - (name_text_width + score_text_width) // 2, y)
+        draw_text(name_text  + ":", button_font, (255, 255, 255), WINDOW_WIDTH // 2 - (name_text_width + score_text_width) // 2, y)
         draw_text(score_text, button_font, (255, 255, 255), WINDOW_WIDTH // 2 + (name_text_width + score_text_width) // 2, y)
         y += 50
 
