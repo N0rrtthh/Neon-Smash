@@ -36,7 +36,7 @@ block_total_height = 3 * BLOCK_HEIGHT + 2 * 10  # Total height of all blocks and
 
 # Calculate offsets to center blocks horizontally and vertically
 block_offset_x = (WINDOW_WIDTH - block_total_width) // 2
-block_offset_y = (WINDOW_HEIGHT - block_total_height) // 2
+block_offset_y = 50
 
 for row in range(3):
     for col in range(10):
@@ -104,7 +104,12 @@ def reset_game():
     blocks = []
     for row in range(3):
         for col in range(10):
-            block = pygame.Rect(80 + col * (BLOCK_WIDTH + 10), 50 + row * (BLOCK_HEIGHT + 10), BLOCK_WIDTH, BLOCK_HEIGHT)
+            block = pygame.Rect(
+                block_offset_x + col * (BLOCK_WIDTH + 10),
+                block_offset_y + row * (BLOCK_HEIGHT + 10),
+                BLOCK_WIDTH,
+                BLOCK_HEIGHT
+            )
             blocks.append(block)
     game_over = False
 
@@ -327,11 +332,11 @@ while True:
                 level += 1
                 ball_speed_x = random.choice([-1, 1]) * (BALL_SPEED + level)
                 ball_speed_y = -(BALL_SPEED + level)
-                for row in range(3 + level):
+                for row in range(3):
                     for col in range(10):
                         block = pygame.Rect(
-                            80 + col * (BLOCK_WIDTH + 10),
-                            50 + row * (BLOCK_HEIGHT + 10),
+                            block_offset_x + col * (BLOCK_WIDTH + 10),
+                            block_offset_y + row * (BLOCK_HEIGHT + 10),
                             BLOCK_WIDTH,
                             BLOCK_HEIGHT
                         )
